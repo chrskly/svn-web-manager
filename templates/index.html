@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/flat-ui/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="/static/flat-ui/css/flat-ui.css" type="text/css" />
+    <link rel="stylesheet" href="/static/style.css" type="text/css" />
+  </head>
+  <body>
+    <div id="content">
+      <form method="POST" action="/">
+        {% csrf_token %}
+        <h2>Which site do you want to update?</h2>
+        {% for site in sites %}
+        <input type="radio" name="siteid" value="{{ site.name }}">{{ site.name }} ( current revision = {{ site.current_svn_revision }} )</input><br>
+        {% endfor %}
+        <h2>What revision do you want to update it to?</h2>
+        Revision <input type="text" name="revision" value="latest"></input></br>
+        <input type="submit" value="gogogo">
+      </form>
+    </div>
+  </body>
+</html>
